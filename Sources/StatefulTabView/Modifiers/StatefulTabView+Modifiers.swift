@@ -26,7 +26,7 @@ public extension StatefulTabView {
         return copy
     }
     
-    func barAppearanceConfiguration(_ configuration: TabBarBackgroundConfiguration) -> StatefulTabView {
+    func barAppearanceConfiguration(_ configuration: StatefulTabBarBackgroundConfiguration) -> StatefulTabView {
         var copy = self
         copy.tabBarConfiguration = configuration
         return copy

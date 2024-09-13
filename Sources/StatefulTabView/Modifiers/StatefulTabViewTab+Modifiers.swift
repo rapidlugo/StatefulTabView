@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-public extension Tab {
-    func prefersLargeTitle(_ bool: Bool) -> Tab {
+public extension StatefulTabViewTab {
+    func prefersLargeTitle(_ bool: Bool) -> StatefulTabViewTab {
         var copy = self
         copy.prefersLargeTitle = bool
         return copy

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct Tab {
+public struct StatefulTabViewTab {
     var view: AnyView
     var barItem: UITabBarItem? = nil
     

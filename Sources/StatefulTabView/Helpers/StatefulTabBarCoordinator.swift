@@ -15,9 +15,9 @@ class TabBarCoordinator: NSObject, UITabBarControllerDelegate {
         static let inlineTitleRect = CGRect(x: 0, y: 0, width: 1, height: 1)
     }
     
-    var parent: TabBarController
+    var parent: StatefulTabBarController
 
-    init(_ tabBarController: TabBarController) {
+    init(_ tabBarController: StatefulTabBarController) {
         self.parent = tabBarController
     }
 

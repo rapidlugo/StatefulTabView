@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-public enum TabBarBackgroundConfiguration {
+public enum StatefulTabBarBackgroundConfiguration {
     case `default`
     case opaque
     case transparent
 }
 
-struct TabBarController: UIViewControllerRepresentable {
+struct StatefulTabBarController: UIViewControllerRepresentable {
     var controllers: [UIViewController]
-    var tabBarItems: [Tab]
+    var tabBarItems: [StatefulTabViewTab]
     
     var barTintColor: UIColor?
     var unselectedItemTintColor: UIColor?
     var backgroundColor: UIColor?
-    var tabBarConfiguration: TabBarBackgroundConfiguration?
+    var tabBarConfiguration: StatefulTabBarBackgroundConfiguration?
     
     @Binding var selectedIndex: Int
     
@@ -51,7 +51,7 @@ struct TabBarController: UIViewControllerRepresentable {
     }
 }
 
-private extension TabBarController {
+private extension StatefulTabBarController {
     func configure(_ tabBar: UITabBar) {
         let appearance = tabBar.standardAppearance.copy()
         

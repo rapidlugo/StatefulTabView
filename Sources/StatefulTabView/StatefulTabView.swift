@@ -9,19 +9,19 @@ import SwiftUI
 
 public struct StatefulTabView: View {
     internal var viewControllers: [UIHostingController<AnyView>] = []
-    internal var tabBarItems: [Tab] = []
+    internal var tabBarItems: [StatefulTabViewTab] = []
 
     internal var barTintColor: UIColor? = nil
     internal var unselectedItemTintColor: UIColor? = nil
     internal var backgroundColor: UIColor? = nil
-    internal var tabBarConfiguration: TabBarBackgroundConfiguration? = nil
+    internal var tabBarConfiguration: StatefulTabBarBackgroundConfiguration? = nil
     
     @State private var stateIndex: Int = 0
     @Binding private var bindableIndex: Int
 
     private var useBindableIndex: Bool = false
     
-    public init(selectedIndex: Binding<Int>? = nil, @TabBuilder _ content: () -> [Tab]) {
+    public init(selectedIndex: Binding<Int>? = nil, @TabBuilder _ content: () -> [StatefulTabViewTab]) {
         if let selectedIndex = selectedIndex {
             _bindableIndex = selectedIndex
             useBindableIndex = true
@@ -34,7 +34,7 @@ public struct StatefulTabView: View {
     }
 
     public var body: some View {
-        TabBarController(controllers: viewControllers,
+        StatefulTabBarController(controllers: viewControllers,
                          tabBarItems: tabBarItems,
                          barTintColor: barTintColor,
                          unselectedItemTintColor: unselectedItemTintColor,
@@ -46,7 +46,7 @@ public struct StatefulTabView: View {
 }
 
 private extension StatefulTabView {
-    mutating func configureViewControllers(with tabs: [Tab]) {
+    mutating func configureViewControllers(with tabs: [StatefulTabViewTab]) {
         tabs.forEach {
             let tabController = UIHostingController(rootView: $0.view)
             tabController.tabBarItem = $0.barItem
@@ -58,11 +58,11 @@ private extension StatefulTabView {
 
 @resultBuilder
 public struct TabBuilder {
-    public static func buildBlock(_ children: Tab...) -> [Tab] {
+    public static func buildBlock(_ children: StatefulTabViewTab...) -> [StatefulTabViewTab] {
         children
     }
 
-    public static func buildBlock(_ component: Tab) -> [Tab] {
+    public static func buildBlock(_ component: StatefulTabViewTab) -> [StatefulTabViewTab] {
         [component]
     }
 }
