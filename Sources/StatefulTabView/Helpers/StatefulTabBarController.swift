@@ -29,6 +29,9 @@ struct StatefulTabBarController: UIViewControllerRepresentable {
         tabBarController.viewControllers = controllers
         tabBarController.delegate = context.coordinator
         tabBarController.selectedIndex = selectedIndex
+        if #available(iOS 18, *) {
+            tabBarController.mode = .tabBar
+        }
         
         configure(tabBarController.tabBar)
         return tabBarController
